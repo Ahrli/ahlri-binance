@@ -1771,6 +1771,17 @@ class Client(object):
 
         """
         return self._get('account', True, data=params)
+    def get_asset_snapshort(self,otype,**params):
+        '''
+
+        :param otype: "SPOT", "MARGIN", "FUTURES"
+        :param timestamp: LONG	YES
+        :param params:
+        :return:
+        '''
+        params['type'] = otype
+        return self._request_margin_api('get','accountSnapshot',True, data=params)
+
 
     def get_asset_balance(self, asset, **params):
         """Get current asset balance.
